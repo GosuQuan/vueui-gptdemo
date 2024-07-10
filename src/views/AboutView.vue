@@ -14,8 +14,10 @@ const count = ref(0)
 const inputValue = ref('')
 const data = ref('')
 const handleOnclick = async () => {
+  const eventSource = new EventSource("http://localhost:9000/chat")
   data.value = await axios.get("http://localhost:9000/chat")
     .then((res => res.data))
+  
     .catch(function (error) {
       console.log(error)
     })
